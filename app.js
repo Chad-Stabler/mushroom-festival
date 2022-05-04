@@ -58,8 +58,8 @@ function displayFriends() {
     // for each friend in state . . .
     for (let friend of friendData) {
         // use renderFriend to make a friendEl
-        renderFriend(friend);
-        friendsEl.addEventListener('click', () => {
+        let newRender = renderFriend(friend);
+        newRender.addEventListener('click', () => {
             if (friend.satisfaction < 3 && mushroomCount > 0) {
                 friend.satisfaction++;
                 mushroomCount--;
@@ -67,7 +67,8 @@ function displayFriends() {
                 displayMushrooms();
             }
         });
-        friendsEl.append(friend);
+
+        friendsEl.append(newRender);
         // this is a clickable list, so . . .
         //     add an event listener to each friend
         //         and if the friend's satisfaction level is below 3 and you have mushrooms left
